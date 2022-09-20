@@ -1,0 +1,150 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #aac564;
+  color: #222;
+  font-family: -apple-system, "Roboto", sans-serif;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1000px;
+  height: 500px;
+  padding: 60px;
+  background-color: #f3f4f3;
+  border-radius: 50px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+}
+
+.calendar {
+  height: 100%;
+  position: relative;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 120px;
+  z-index: 1;
+}
+.calendar-header button {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: -92px;
+  background: none;
+  color: #888;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.calendar-header button:first-child {
+  left: 0;
+}
+.calendar-header button:last-child {
+  right: 0;
+}
+.calendar-header button:last-child img {
+  transform: rotate(180deg);
+}
+
+.week {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 420px;
+  color: #888;
+  font-weight: bold;
+}
+.week div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.calendar-contents {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.contents-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300%;
+  height: 100%;
+}
+
+.two-month {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 880px;
+  background-color: #f3f4f3;
+}
+.two-month:first-child {
+  left: -100%;
+}
+.two-month:last-child {
+  right: -100%;
+}
+
+.one-month {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 420px;
+  flex-direction: column;
+}
+.one-month div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 100px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+tr {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+td {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+}
+
+.animate-prev {
+  transform: translateX(33.3333%);
+  transition: transform 0.6s ease-out;
+}
+
+.animate-next {
+  transform: translateX(-33.3333%);
+  transition: transform 0.6s ease-out;
+}
+
+/*# sourceMappingURL=style.css.map */

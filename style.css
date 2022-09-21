@@ -62,6 +62,9 @@ body {
 .calendar-header button:last-child img {
   transform: rotate(180deg);
 }
+.calendar-header button:active {
+  opacity: 0.5;
+}
 
 .week {
   display: flex;

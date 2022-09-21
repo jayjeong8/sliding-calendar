@@ -12,7 +12,7 @@ body {
   align-items: center;
   justify-content: center;
   background-color: #aac564;
-  color: #222;
+  color: #333;
   font-family: -apple-system, "Roboto", sans-serif;
 }
 
@@ -23,7 +23,7 @@ body {
   width: 1000px;
   height: 500px;
   padding: 60px;
-  background-color: #f3f4f3;
+  background-color: #ecedec;
   border-radius: 50px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
 }
@@ -38,16 +38,16 @@ body {
   justify-content: space-between;
   align-items: center;
   position: absolute;
-  top: 120px;
+  top: 100px;
   z-index: 1;
 }
 .calendar-header button {
   width: 24px;
   height: 24px;
   position: absolute;
-  top: -92px;
+  top: -72px;
   background: none;
-  color: #888;
+  color: #999;
   border: none;
   font-size: 16px;
   font-weight: bold;
@@ -68,7 +68,7 @@ body {
   justify-content: space-between;
   align-items: center;
   width: 420px;
-  color: #888;
+  color: #999;
   font-weight: bold;
 }
 .week div {
@@ -97,9 +97,12 @@ body {
 .two-month {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: start;
   width: 880px;
-  background-color: #f3f4f3;
+  height: 100%;
+  padding-top: 48px;
+  background-color: #ecedec;
+  box-sizing: content-box;
 }
 .two-month:first-child {
   left: -100%;
@@ -110,16 +113,16 @@ body {
 
 .one-month {
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  justify-content: start;
+  align-items: center;
   width: 420px;
   flex-direction: column;
 }
-.one-month div {
+.one-month > div {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-bottom: 100px;
+  margin-bottom: 80px;
   font-size: 20px;
   font-weight: bold;
 }
@@ -135,6 +138,12 @@ td {
   justify-content: center;
   align-items: center;
   height: 40px;
+}
+td > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
 }
 
 .animate-prev {

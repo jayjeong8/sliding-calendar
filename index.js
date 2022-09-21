@@ -1,7 +1,6 @@
 const now = new Date();
 let year = now.getFullYear();
 let month = now.getMonth() + 1;
-let isFirst  = true;
 
 /**
  * 윈도우 load 시 달력 3페이지를 생성한다. (총 6개월)
@@ -48,17 +47,18 @@ contentsWrapper.addEventListener('transitionend', () => {
     contentsWrapper.removeChild(contentsWrapper.children[2]);
 
     // month를 새로 생성할 캘린더의 값으로 변경
-    // 가장 처음에는 앞뒤 캘린더가 만들어져 있기 때문에 4개월을 빼준다.
-    month -= isFirst ? 4 : 2;
-    isFirst = false;
+    const prevMonth = month - 4;
 
     // 새로운 캘린더 생성
-    const [year1, month1, year2, month2] = getDate(year, month);
+    const [year1, month1, year2, month2] = getDate(year, prevMonth);
     const divTwoMonth = createTwoMonthHtml(year1, month1, year2, month2);
 
     // 바뀐 값으로 갱신
-    year = year1;
-    month = month1;
+    month -= 2;
+    if (month < 1) {
+      year = year - 1;
+      month = 12 + month;
+    }
 
     // 앞쪽에 캘린더 추가
     contentsWrapper.insertBefore(divTwoMonth, contentsWrapper.children[0]);
@@ -68,22 +68,22 @@ contentsWrapper.addEventListener('transitionend', () => {
   }
 
   // *next 버튼을 눌렀을 경우*
-
   // 첫번째 캘린더 삭제
   contentsWrapper.removeChild(contentsWrapper.children[0]);
 
   // month를 새로 생성할 캘린더의 값으로 변경
-  // 가장 처음에는 앞뒤 캘린더가 만들어져 있기 때문에 4개월을 더해준다.
-  month += isFirst ? 4 : 2;
-  isFirst = false;
+  const nextMonth = month + 4;
 
   // 새로운 캘린더 생성
-  const [year1, month1, year2, month2] = getDate(year, month);
+  const [year1, month1, year2, month2] = getDate(year, nextMonth);
   const divTwoMonth = createTwoMonthHtml(year1, month1, year2, month2);
 
   // 바뀐 값으로 갱신
-  year = year1;
-  month = month1;
+  month += 2;
+  if (month > 12) {
+    year = year + 1;
+    month = month % 12;
+  }
 
   // 뒤쪽에 캘린더 추가
   contentsWrapper.appendChild(divTwoMonth);
@@ -170,23 +170,23 @@ function createTrHtml(year, month) {
  */
 function getDate(year, month) {
   // -1월(1월 - 두달) ,
-  if(month === -1) {
-    return [year - 1, 11, year - 1, 12];
+  if (month < 0) {
+    return [year - 1, 12 + month, year - 1, 12 + month + 1];
   }
 
   // 0월(2월 - 두달)
-  if(month === 0){
+  if (month === 0) {
     return [year - 1, 12, year, 1];
   }
 
   // 12월
-  if(month === 12) {
+  if (month === 12) {
     return [year, 12, year + 1, 1];
   }
 
   // 13월(11월 + 두달), 14월(12월 + 두달)
-  if(month > 12) {
-    return [year + 1, month-12, year + 1, month-11];
+  if (month > 12) {
+    return [year + 1, month - 12, year + 1, month - 11];
   }
 
   return [year, month, year, month + 1];
